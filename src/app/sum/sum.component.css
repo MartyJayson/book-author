@@ -1,0 +1,10 @@
+input {
+  max-width: 10%;
+  display: inline;
+}
+button{
+  margin: 1% 5%;
+}
+.done{
+  color: red;
+}

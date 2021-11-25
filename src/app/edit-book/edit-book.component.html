@@ -1,0 +1,15 @@
+<h2>"{{thatBookTitle()}}" book works!</h2>
+<form class="form-group" action="create">
+  <input class="form-control" [(ngModel)]="title" type="text" name="title" placeholder="{{thatBookTitle()}}" required/><br>
+  <input class="form-control" [(ngModel)]="description" type="text" name="description" placeholder="{{thatBookDescription()}}" required/><br>
+  <h6>Previous year: {{thatBookYear()}}</h6><input class="form-control" [(ngModel)]="issueYear" type="number" min="1900" max="2099" name="issueYear" required/><br>
+  <select [(ngModel)]="authorid" id="authorid" name="authors">
+    <option *ngFor="let author of authors" [value]="author.id">
+      {{author.name}}
+    </option>
+  </select>
+  <button class="btn btn-success" (click)="submit()">Submit</button>
+    <div class="done" *ngIf="done"> Отправлено</div>
+</form>
+<br>
+<a class="btn btn-primary" routerLink="">Home</a>

@@ -1,0 +1,12 @@
+<div class="container" style="background-color: bisque; padding: 10%; margin-top: 5%" >
+  <h2 style="text-align: center">Date works!<h1>{{clock}}</h1></h2>
+  <form class="form-group" action="date">
+  <input class="form-control" [(ngModel)]="now" type="date" name="number1" id="1"/><br>
+  <input class="form-control" [(ngModel)]="time" type="time" name="number2" id="2"/><br>
+  <button class="btn btn-success" (click)="submit()">Submit</button>
+    <div *ngIf="done"><p style="background-color: burlywood">New time = {{ans}}</p> </div>
+  </form>
+  <br>
+  <a class="btn btn-primary" routerLink="">Home</a>
+</div>
+

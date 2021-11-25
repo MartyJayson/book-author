@@ -1,0 +1,15 @@
+<div class="container" style="background-color: bisque">
+  <a routerLink="createAuthor" class="btn btn-success">Create</a> <a class="btn btn-primary" routerLink="">Home</a>
+  <a class="btn btn-warning" (click)="previous()"> < </a>
+  <a class="btn btn-warning" (click)="next()"> > </a>
+  <ul style="list-style: none">
+    <li *ngFor="let author of authors?.items">
+      <h3>{{author.id}}. {{author.name}}</h3>
+      <p>Birthday: {{dateFormatter(author.birthdate)}}</p>
+      <br>
+      <a routerLink="editAuthor/{{author.id}}" class="btn btn-success">Edit</a>
+      <a class="btn btn-danger" (click)="delete(author.id)">Delete</a>{{ans}}
+    </li>
+  </ul>
+</div>
+

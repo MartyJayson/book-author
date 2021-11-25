@@ -1,0 +1,9 @@
+<h2>Create Author works!</h2>
+<div *ngIf="done">{{ans}}</div>
+<form class="form-group" action="create">
+  <input class="form-control" [(ngModel)]="name" [ngModelOptions]="{standalone: true}" type="text" placeholder="Name of Author"  required><br>
+  <input class="form-control" [(ngModel)]="birthdate" [ngModelOptions]="{standalone: true}" type="date" placeholder="01.01.1980"  required><br>
+  <button class="btn btn-success" (click)="submit()">Submit</button>
+</form>
+<br>
+<a class="btn btn-primary" routerLink="">Home</a>

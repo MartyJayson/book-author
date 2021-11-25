@@ -1,0 +1,10 @@
+<h2>Sum works!</h2>
+<form class="form-group" action="calc">
+    <input class="form-control" [(ngModel)]="num" type="number" name="number1" id="1"/>
+    <label>+</label>
+    <input class="form-control" [(ngModel)]="num2" type="number" name="number2" id="2"/><br>
+    <button class="btn btn-success" (click)="submit()">Calculate</button>
+  <div class="done" *ngIf="done"> ={{ans}} </div>
+</form>
+<br>
+<a class="btn btn-primary" routerLink="">Home</a>

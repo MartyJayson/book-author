@@ -1,0 +1,15 @@
+<h2>Create book works!</h2>
+<form class="form-group" action="create">
+  <input class="form-control" [(ngModel)]="title" type="text" name="title" placeholder="title" required/><br>
+  <input class="form-control" [(ngModel)]="description" type="text" name="description" placeholder="description" required/><br>
+  <input class="form-control" [(ngModel)]="issueYear" type="number" min="1900" max="2099" name="issueYear" placeholder="issueYear, e.g: 2021 " required/><br>
+  <select [(ngModel)]="authorid" id="authorid" name="authors">
+    <option *ngFor="let author of authors" [value]="author.id">
+      {{author.name}}
+    </option>
+  </select>
+  <button class="btn btn-success" (click)="submit()">Submit</button>
+<!--  <div class="done" *ngIf="done"> ={{ans}} </div>-->
+</form>
+<br>
+<a class="btn btn-primary" routerLink="">Home</a>

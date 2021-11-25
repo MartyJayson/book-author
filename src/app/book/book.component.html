@@ -1,0 +1,13 @@
+<div class="container" style="background-color: bisque">
+  <a class="btn btn-primary" routerLink="createBook">Create</a>
+  <a class="btn btn-success" routerLink="">Home</a>
+  <a class="btn btn-warning" (click)="previous()"> < </a>
+  <a class="btn btn-warning" (click)="next()"> > </a>
+  <br>
+  <ul style="list-style: none">
+    <li *ngFor="let book of books?.items; let i = index">
+      <h3>{{book.id}}. {{book.title}}</h3> Description:{{book.description}} <br> <h6> Author: <span>{{getAuthorName(i + (page*4) )}}</span> </h6><br> &copy; {{book.issueYear}} issue year.
+      <br><a routerLink="editBook/{{book.id}}" class="btn btn-success">Edit</a><a class="btn btn-danger" (click)="deleteBook(book.id)">Delete</a>
+    </li>
+  </ul>
+</div>
