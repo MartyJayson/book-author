@@ -4,10 +4,11 @@
   <a class="btn btn-warning" (click)="previous()"> < </a>
   <a class="btn btn-warning" (click)="next()"> > </a>
   <a class="btn btn-danger" (click)="type()"> {{sort}} </a>
+  <a class="btn btn-danger" (click)="dir()"><i *ngIf="down==true" class="fa fa-long-arrow-down"></i><i *ngIf="down==false" class="fa fa-long-arrow-up"></i></a>
   <br>
   <ul style="list-style: none">
     <li *ngFor="let book of books?.items; let i = index">
-      <h3>{{book.id}}. {{book.title}}</h3> Description:{{book.description}} <br> <h6> Author: <span *ngIf="sort=='id'">{{getAuthorName(i + (page*4) )}}</span> </h6><br> &copy; {{book.issueYear}} issue year.
+      <h3>{{book.id}}. {{book.title}}</h3> Description:{{book.description}} <br> <h6> Author: <span *ngIf="sort=='id'&&asc=='asc'">{{getAuthorName(i + (page*4) )}}</span> </h6><br> &copy; {{book.issueYear}} issue year.
       <br><a routerLink="editBook/{{book.id}}" class="btn btn-success">Edit</a><a class="btn btn-danger" (click)="deleteBook(book.id)">Delete</a>
     </li>
   </ul>

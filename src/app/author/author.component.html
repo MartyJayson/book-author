@@ -1,8 +1,9 @@
 <div class="container" style="background-color: bisque">
   <a routerLink="createAuthor" class="btn btn-success">Create</a> <a class="btn btn-primary" routerLink="">Home</a>
-  <a class="btn btn-warning" (click)="previous()"> < </a>
-  <a class="btn btn-warning" (click)="next()"> > </a>
+  <a class="btn btn-warning" (click)="previous()"> <i class="fa fa-arrow-left"></i> </a>
+  <a class="btn btn-warning" (click)="next()"> <i class="fa fa-arrow-right"></i> </a>
   <a class="btn btn-danger" (click)="type()"> {{sort}} </a>
+  <a class="btn btn-danger" (click)="dir()"><i *ngIf="down==true" class="fa fa-long-arrow-down"></i><i *ngIf="down==false" class="fa fa-long-arrow-up"></i></a>
   <ul style="list-style: none">
     <li *ngFor="let author of authors?.items">
       <h3>{{author.id}}. {{author.name}}</h3>

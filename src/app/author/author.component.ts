@@ -15,13 +15,15 @@ export class AuthorComponent implements OnInit {
   sort:string = "id";
   types:string[] = ["id","name","birthdate"];
   i:number = 0;
+  down:boolean = true;
+  asc:string = "asc";
   constructor(private helloService:HelloService) { }
 
   ngOnInit(): void {
     this.getAllAuthors();
   }
   async getAllAuthors() {
-    this.authors = await this.helloService.getAuthorsAwait(this.page,this.sort);
+    this.authors = await this.helloService.getAuthorsAwait(this.page,this.sort,this.asc);
   }
   /*date(id:number|undefined){
     this.authors?.find(x => x.id == id)?.birthdate?.toDateString();
@@ -34,14 +36,14 @@ export class AuthorComponent implements OnInit {
     if(this.authors.totalPages - 2 >= this.page) {
       this.page += 1;
       this.authors = null;
-      this.authors = await this.helloService.getAuthorsAwait(this.page,this.sort);
+      this.authors = await this.helloService.getAuthorsAwait(this.page,this.sort,this.asc);
     }
   }
   async previous(){
     if(this.page > 0) {
       this.page -= 1;
       this.authors = null;
-      this.authors = await this.helloService.getAuthorsAwait(this.page, this.sort);
+      this.authors = await this.helloService.getAuthorsAwait(this.page, this.sort,this.asc);
     }
   }
   dateFormatter(d:Date){
@@ -54,6 +56,17 @@ export class AuthorComponent implements OnInit {
       this.i += 1;
     this.sort = this.types[this.i];
     this.authors = null;
-    this.authors = await this.helloService.getAuthorsAwait(this.page,this.sort);
+    this.authors = await this.helloService.getAuthorsAwait(this.page,this.sort,this.asc);
+  }
+  async dir(){
+    this.down = !this.down;
+    if(this.asc=="asc")
+      this.asc="desc";
+    else
+      this.asc="asc";
+
+
+    this.authors = null;
+    this.authors = await this.helloService.getAuthorsAwait(this.page,this.sort,this.asc);
   }
 }

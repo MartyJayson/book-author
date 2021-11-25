@@ -28,19 +28,19 @@ export class HelloService {
       let url = "http://localhost:8080/date";
       return this.httpClient.get(url+"?date="+date, {responseType: 'text'});
     }
-    async getBooksAwait(page:number, sort:string){
+    async getBooksAwait(page:number, sort:string, dir:string){
     let url = "http://localhost:8080/book/books?size=4&page=";
     console.log(url+page);
-    return this.httpClient.get<SimplepageModel<BookModel>>(url+page+"&sort="+sort).toPromise();
+    return this.httpClient.get<SimplepageModel<BookModel>>(url+page+"&sort="+sort+","+dir).toPromise();
     }
     getBooks(): Observable<any>{
       let url = "http://localhost:8080/test";
       return this.httpClient.get<BookModel[]>(url);
     }
-    async getAuthorsAwait(page:number, sort:string){
+    async getAuthorsAwait(page:number, sort:string, dir:string){
       let url = "http://localhost:8080/author/authors?size=4&page=";
       console.log(url+page);
-      return this.httpClient.get<SimplepageModel<AuthorModel>>(url+page+"&sort="+sort).toPromise();
+      return this.httpClient.get<SimplepageModel<AuthorModel>>(url+page+"&sort="+sort+","+dir).toPromise();
     }
     getAuthors(){
       let url = "http://localhost:8080/testA";
