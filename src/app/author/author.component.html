@@ -2,6 +2,7 @@
   <a routerLink="createAuthor" class="btn btn-success">Create</a> <a class="btn btn-primary" routerLink="">Home</a>
   <a class="btn btn-warning" (click)="previous()"> < </a>
   <a class="btn btn-warning" (click)="next()"> > </a>
+  <a class="btn btn-danger" (click)="type()"> {{sort}} </a>
   <ul style="list-style: none">
     <li *ngFor="let author of authors?.items">
       <h3>{{author.id}}. {{author.name}}</h3>

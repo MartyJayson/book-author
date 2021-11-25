@@ -15,6 +15,9 @@ export class BookComponent implements OnInit {
   authors:AuthorModel[];
   ans:string="";
   page:number = 0;
+  sort:string="id";
+  types:string[] = ["id","title"];
+  i:number = 0;
   constructor(private route:ActivatedRoute,private helloService:HelloService) { }
 
   ngOnInit(): void {
@@ -29,7 +32,7 @@ export class BookComponent implements OnInit {
 
   async getAllBooks(){
     this.helloService.getAuthors().subscribe(data => this.authors = data);
-    this.books = await this.helloService.getBooksAwait(this.page);
+    this.books = await this.helloService.getBooksAwait(this.page,this.sort);
   }
   deleteBook(id:number|undefined){
     console.log(id);
@@ -39,15 +42,24 @@ export class BookComponent implements OnInit {
     if(this.books.totalPages - 2 >= this.page) {
       this.page += 1;
       this.books = null;
-      this.books = await this.helloService.getBooksAwait(this.page);
+      this.books = await this.helloService.getBooksAwait(this.page,this.sort);
     }
   }
   async previous(){
     if(this.page > 0) {
       this.page -= 1;
       this.books = null;
-      this.books = await this.helloService.getBooksAwait(this.page);
+      this.books = await this.helloService.getBooksAwait(this.page,this.sort);
     }
+  }
+  async type(){
+    if(this.i>this.types.length-2)
+      this.i = 0;
+    else
+      this.i += 1;
+    this.sort = this.types[this.i];
+    this.books = null;
+    this.books = await this.helloService.getBooksAwait(this.page,this.sort);
   }
 
 }
