@@ -1,0 +1,20 @@
+<div class="container">
+  <h1>Login works!</h1>
+<div class="alert alert-danger" [hidden]="!error">
+  There was a problem logging in. Please try again.
+</div>
+  <div *ngIf="done">{{ans}}</div>
+<form role="form" (submit)="login()" routerLink="login/profile">
+  <div class="form-group">
+    <label for="username">Username:</label> <input type="text"
+                                                   class="form-control" id="username" name="username" [(ngModel)]="credentials.username"/>
+  </div>
+  <div class="form-group">
+    <label for="password">Password:</label> <input type="password"
+                                                   class="form-control" id="password" name="password" [(ngModel)]="credentials.password"/>
+  </div>
+  <button class="btn btn-success" type="submit" >Submit</button>
+  <button class="btn btn-primary" routerLink="">Home</button>
+
+</form>
+</div>

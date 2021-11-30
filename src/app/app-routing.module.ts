@@ -9,6 +9,9 @@ import { CreateBookComponent} from "./create-book/create-book.component";
 import {EditBookComponent} from "./edit-book/edit-book.component";
 import {CreateAuthorComponent} from "./create-author/create-author.component";
 import {EditAuthorComponent} from "./edit-author/edit-author.component";
+import {RegistrationComponent} from "./registration/registration.component";
+import {LoginComponent} from "./login/login.component";
+import {ProfileComponent} from "./profile/profile.component";
 
 const routes: Routes = [
   {path: '', component: HelloComponent},
@@ -19,7 +22,10 @@ const routes: Routes = [
   {path: 'author/editAuthor/:id', component:EditAuthorComponent},
   {path: 'author/createAuthor', component:CreateAuthorComponent},
   {path: 'book/createBook', component: CreateBookComponent},
-  {path: 'book/editBook/:id', component: EditBookComponent}
+  {path: 'book/editBook/:id', component: EditBookComponent},
+  {path: 'registration', component: RegistrationComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'login/profile', component:ProfileComponent}
 ];
 
 @NgModule({

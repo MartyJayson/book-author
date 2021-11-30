@@ -1,0 +1,10 @@
+.con{
+  position: absolute;
+  right: 10%;
+  top: 5%;
+  color: white;
+  padding: 1%;
+}
+a{
+  text-align: right;
+}
