@@ -22,9 +22,9 @@ export class RegistrationComponent implements OnInit {
   }
   submit(){
     if(this.password === this.password2) {
-      this.user = new UserModel(this.username, this.password);
+      this.user = new UserModel(this.username, this.password, "USER");
       this.helloService.createUser(this.user).subscribe(data => this.ans = data);
-      this.ans = "Account created successfully!"
+     // this.ans = "Account created successfully!"
     }
     else { this.ans = "Passwords are different!"}
     this.done = true;

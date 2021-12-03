@@ -1,1 +1,12 @@
-<p>profile works!</p>
+<div style="background-color: bisque; padding: 10%; margin-top: 5%">
+  <h2>Profile works!</h2>
+  <h3>Hello {{user.username}}</h3>
+  <a class="btn btn-info" (click)="open()"> Change Password</a>
+  <app-change-password [hidden]="!hidden" [user]="user"></app-change-password>
+
+  <br><br>
+  <a class="btn btn-info" (click)="sum()">Sum</a>
+  <a class="btn btn-success" (click)="date()">Date</a>
+  <a class="btn btn-warning" (click)="books()">Books</a>
+  <a class="btn btn-danger" (click)="authors()">Authors</a>
+</div>

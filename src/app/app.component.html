@@ -1,7 +1,7 @@
-<div class="container">
-  <div class="con">
-  <a id="register" class="btn btn-primary" routerLink="registration">Registration</a>
-  <a id="login" class="btn btn-info" routerLink="login">Login</a>
-  </div>
+<div class="con">
+  <a id="register" *ngIf="!logIn" class="btn btn-info" routerLink="registration">Registration</a>
+  <a id="login" *ngIf="!logIn" class="btn btn-primary" routerLink="login">Login</a>
+  <a id="logout" *ngIf="logIn" (click)="logout()" class="btn btn-primary">Log out</a>
+</div><div class="container">
   <router-outlet></router-outlet>
 </div>

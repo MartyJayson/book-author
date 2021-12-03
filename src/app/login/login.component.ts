@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Output} from '@angular/core';
 import {HelloService} from "../hello.service";
 import {Router} from "@angular/router";
+import {AnswerModel} from "../model/answer.model";
 
 @Component({
   selector: 'app-login',
@@ -8,21 +9,22 @@ import {Router} from "@angular/router";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
-  ans: string;
+  ans: AnswerModel;
+  id: number;
   done: boolean = false
   credentials = {username: '', password: '', role:'USER'};
-  error:boolean = false;
-
   constructor(private helloService:HelloService, private router:Router) { }
 
   ngOnInit(): void {
   }
-  login(){
-    this.done = true;
-    console.log(this.credentials.username + " " + this.credentials.username);
+login(){
     this.helloService.login(this.credentials).subscribe(data => this.ans = data);
-    this.router.navigateByUrl("/profile");
+
+    localStorage.setItem("auth_token", this.ans.token);
+    this.router.navigate(["/profile/" + this.ans.id]);
+
+    if(this.ans.id == null)
+      this.done = true;
   }
 
 }

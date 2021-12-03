@@ -12,6 +12,7 @@ import {EditAuthorComponent} from "./edit-author/edit-author.component";
 import {RegistrationComponent} from "./registration/registration.component";
 import {LoginComponent} from "./login/login.component";
 import {ProfileComponent} from "./profile/profile.component";
+import {ChangePasswordComponent} from "./change-password/change-password.component";
 
 const routes: Routes = [
   {path: '', component: HelloComponent},
@@ -25,7 +26,8 @@ const routes: Routes = [
   {path: 'book/editBook/:id', component: EditBookComponent},
   {path: 'registration', component: RegistrationComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'login/profile', component:ProfileComponent}
+  {path: 'profile/:id', component:ProfileComponent},
+  {path: 'profile/changePassword', component:ChangePasswordComponent}
 ];
 
 @NgModule({

@@ -1,10 +1,9 @@
 <div class="container">
   <h1>Login works!</h1>
-<div class="alert alert-danger" [hidden]="!error">
-  There was a problem logging in. Please try again.
+<div class="alert alert-danger" [hidden]="!done">
+  Wrong username or password!
 </div>
-  <div *ngIf="done">{{ans}}</div>
-<form role="form" (submit)="login()" routerLink="login/profile">
+<form role="form" (submit)="login()">
   <div class="form-group">
     <label for="username">Username:</label> <input type="text"
                                                    class="form-control" id="username" name="username" [(ngModel)]="credentials.username"/>
@@ -15,6 +14,5 @@
   </div>
   <button class="btn btn-success" type="submit" >Submit</button>
   <button class="btn btn-primary" routerLink="">Home</button>
-
 </form>
 </div>

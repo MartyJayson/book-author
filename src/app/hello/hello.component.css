@@ -5,4 +5,14 @@ a {
 * {
   text-align: center;
 }
-
+.con{
+  width: 20%;
+  position: absolute;
+  right: 10%;
+  top: 10%;
+  color: white;
+  padding: 1%;
+}
+#register,#login{
+  text-align: right;
+}

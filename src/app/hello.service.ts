@@ -11,7 +11,10 @@ import {UserModel} from "./model/user.model";
 })
 
 export class HelloService {
-
+    headers = new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem('auth_token')}`
+    })
     constructor(private httpClient: HttpClient){
 
     }
@@ -77,11 +80,19 @@ export class HelloService {
   // ------------------- User ------------------------------------------------------------------------
     createUser(user:UserModel|undefined): Observable<any>{
       console.log(user);
-      let url = "http://localhost:8080/user/registration";
+      let url = "http://localhost:8080/api/auth/signup";
       return this.httpClient.post<UserModel>(url, user);
     }
     login(user:UserModel|undefined): Observable<any>{
-      let url = "http://localhost:8080/user/login";
+      let url = "http://localhost:8080/api/auth/signin";
+      return this.httpClient.post<UserModel>(url, user);
+    }
+    getUser(id:number):Observable<any>{
+      let url = "http://localhost:8080/api/auth/" + id;
+      return this.httpClient.get<UserModel>(url);
+    }
+    updatePassword(user:UserModel): Observable<any>{
+      let url = "http://localhost:8080/api/auth/changePassword";
       return this.httpClient.post<UserModel>(url, user);
     }
 }
