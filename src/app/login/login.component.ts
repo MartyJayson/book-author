@@ -19,8 +19,14 @@ export class LoginComponent implements OnInit {
   }
 login(){
     this.helloService.login(this.credentials).subscribe(data => this.ans = data);
+    window.sessionStorage.removeItem("auth_token");
+    window.sessionStorage.removeItem("user_name");
+    window.sessionStorage.removeItem("authorities_key")
+    window.sessionStorage.setItem("user_name", this.ans.username);
+    window.sessionStorage.setItem("auth_token", this.ans.token);
+    window.sessionStorage.setItem("authorities_key", JSON.stringify(this.ans.roles));
 
-    localStorage.setItem("auth_token", this.ans.token);
+    console.log(this.ans.token);
     this.router.navigate(["/profile/" + this.ans.id]);
 
     if(this.ans.id == null)

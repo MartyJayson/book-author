@@ -1,9 +1,12 @@
 <div class="container">
 <h1>Registration works!</h1>
 <form class="form-group">
-  <h3 *ngIf="done" class="alert alert-success">{{ans}}</h3>
+  <h3 *ngIf="done" class="alert alert-danger">{{ans}}</h3>
+  <h3 *ngIf="d" class="alert alert-success">Successfully registered!</h3>
   <label>Username:</label>
   <input [(ngModel)]="username" class="form-control" type="text" [ngModelOptions]="{standalone: true}">
+  <label>Email:</label>
+  <input [(ngModel)]="email" class="form-control" type="email" [ngModelOptions]="{standalone: true}" >
   <label>Password:</label>
   <input [(ngModel)]="password" class="form-control" type="password" [ngModelOptions]="{standalone: true}">
   <label>Repeat password:</label>

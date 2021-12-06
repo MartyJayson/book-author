@@ -16,6 +16,7 @@ export class ProfileComponent implements OnInit {
   token:any;
 
   hidden:boolean = false;
+  name: string = sessionStorage.getItem("user_name")
   constructor(private router:ActivatedRoute, private helloService:HelloService, private router1:Router) { }
 
   ngOnInit(): void {
@@ -38,10 +39,10 @@ export class ProfileComponent implements OnInit {
   }
 
   books() {
-    this.router1.navigate(["/books"]);
+    this.router1.navigate(["/book"]);
   }
 
   authors() {
-    this.router1.navigate(["/authors"]);
+    this.router1.navigate(["/author"]);
   }
 }

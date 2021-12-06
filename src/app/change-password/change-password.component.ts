@@ -19,7 +19,7 @@ export class ChangePasswordComponent implements OnInit {
   }
   submit(){
     if(this.password === this.password2) {
-      this.user = new UserModel(this.user.username, this.password, "USER");
+      this.user = new UserModel(this.user.username, this.password, this.user.email, "USER");
     this.helloService.updatePassword(this.user).subscribe(data => this.ans = data);
     // this.ans = "Account created successfully!"
     }

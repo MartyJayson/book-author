@@ -12,9 +12,9 @@ export class AppComponent {
   }
   logout(){
     this.router.navigate(["/"]);
-    localStorage.removeItem('auth_token');
+    sessionStorage.clear();
   }
   public get logIn(): boolean {
-    return (localStorage.getItem('auth_token') !== null);
+    return (sessionStorage.getItem('auth_token') !== null);
   }
 }
