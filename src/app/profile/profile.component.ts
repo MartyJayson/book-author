@@ -14,7 +14,7 @@ export class ProfileComponent implements OnInit {
   private sub:any;
   user:UserModel;
   token:any;
-
+  updated:boolean = false;
   hidden:boolean = false;
   name: string = sessionStorage.getItem("user_name")
   constructor(private router:ActivatedRoute, private helloService:HelloService, private router1:Router) { }
@@ -22,27 +22,30 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.sub = this.router.params.subscribe(params => this.id = +params['id']);
     this.helloService.getUser(this.id).subscribe(data => this.user = data);
+    if(!this.updated){
+      this.updated = true;
+    }
   }
-
   open() {
     this.hidden = !this.hidden;
   }
 
   sum() {
-
-    console.log(localStorage.getItem('token'))
     this.router1.navigate(["/sum"]);
   }
 
   date() {
     this.router1.navigate(["/date"]);
+
   }
 
   books() {
     this.router1.navigate(["/book"]);
+
   }
 
   authors() {
     this.router1.navigate(["/author"]);
+
   }
 }

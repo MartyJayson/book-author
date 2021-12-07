@@ -28,7 +28,7 @@ const routes: Routes = [
   {path: 'registration', component: RegistrationComponent},
   {path: 'login', component: LoginComponent},
   {path: 'profile/:id', component:ProfileComponent},
-  {path: 'profile/changePassword', component:ChangePasswordComponent},
+  {path: 'changePassword', component:ChangePasswordComponent},
   {path: 'resetPassword', component:ResetPasswordComponent}
 ];
 

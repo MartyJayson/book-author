@@ -9,9 +9,9 @@ import {Router} from "@angular/router";
 })
 export class ResetPasswordComponent implements OnInit {
   email: string;
-  ans:string;
+  ans:string = " ";
   done:boolean = false;
-  code: string;
+  code: number;
   verify: number = 0;
   constructor(private helloService:HelloService, private router:Router) { }
 
@@ -20,14 +20,13 @@ export class ResetPasswordComponent implements OnInit {
 
   submit() {
     this.done = true;
-
-    this.helloService.verify(this.email).subscribe(data => this.ans = data);
-    console.log(this.ans);
+    this.helloService.sendEmail(this.email).subscribe(data => this.ans = data);
   }
 
-  res() {
-    if(this.ans == this.code)
-      this.router.navigate(["/change-password"]);
+  async res() {
+    this.ans = await this.helloService.verify(this.email, this.code);
+    if(this.ans)
+      this.router.navigate(["/changePassword",{username: this.email}]);
     else
       console.log("ERROR!")
   }

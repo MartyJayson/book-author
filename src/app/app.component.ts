@@ -13,6 +13,7 @@ export class AppComponent {
   logout(){
     this.router.navigate(["/"]);
     sessionStorage.clear();
+    window.location.reload();
   }
   public get logIn(): boolean {
     return (sessionStorage.getItem('auth_token') !== null);

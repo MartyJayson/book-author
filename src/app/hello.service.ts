@@ -12,7 +12,7 @@ import {UserModel} from "./model/user.model";
 
 export class HelloService {
 
-    headers = new HttpHeaders().set("Authorization", "Bearer " + sessionStorage.getItem('auth_token'));
+    headers = new HttpHeaders().append("Authorization", "Bearer " + sessionStorage.getItem('auth_token'));
     constructor(private httpClient: HttpClient){
 
     }
@@ -95,12 +95,16 @@ export class HelloService {
       return this.httpClient.post<UserModel>(url, user, {headers:this.headers});
     }
   // ------------------- Mail ------------------------------------------------------------------------
-    verify(mail:String): Observable<any>{
+    sendEmail(mail:String):Observable<any>{
       let url = "http://localhost:8080/api/mail/sendEmail?mail=";
-      return this.httpClient.get(url+mail, {headers:this.headers});    }
+      return this.httpClient.get(url+mail, {headers:this.headers})}
     verifyReg(mail:String){
       let url = "http://localhost:8080/api/mail/welcome?mail=";
       return this.httpClient.get(url+mail,{headers:this.headers});
+    }
+    async verify(mail:String, code: number){
+      let url = "http://localhost:8080/api/mail/verify?mail=" + mail + "&code="+code;
+      return this.httpClient.get<string>(url,{headers:this.headers}).toPromise();
     }
 
 }
