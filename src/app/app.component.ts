@@ -18,4 +18,8 @@ export class AppComponent {
   public get logIn(): boolean {
     return (sessionStorage.getItem('auth_token') !== null);
   }
+
+  profile() {
+    this.router.navigate(["/profile/" + sessionStorage.getItem("user_id")]);
+  }
 }

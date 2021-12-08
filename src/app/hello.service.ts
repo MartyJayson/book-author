@@ -6,6 +6,7 @@ import {AuthorModel} from "./model/author.model";
 import {BookauthorModel} from "./model/bookauthor.model";
 import {SimplepageModel} from "./model/simplepage.model";
 import {UserModel} from "./model/user.model";
+import {SimpleUserModel} from "./model/simpleuser.model";
 @Injectable({
     providedIn: 'root'
 })
@@ -86,9 +87,10 @@ export class HelloService {
       let url = "http://localhost:8080/api/auth/signin";
       return this.httpClient.post<UserModel>(url, user,{headers:this.headers});
     }
-    getUser(id:number):Observable<any>{
-      let url = "http://localhost:8080/api/auth/" + id;
-      return this.httpClient.get<UserModel>(url,{headers: this.headers});
+    getUser(user:SimpleUserModel):Observable<any>{
+      let url = "http://localhost:8080/api/auth/";
+      console.log(user);
+      return this.httpClient.post<UserModel>(url, user,{headers: this.headers});
     }
     updatePassword(user:UserModel): Observable<any>{
       let url = "http://localhost:8080/api/auth/changePassword";
@@ -106,5 +108,4 @@ export class HelloService {
       let url = "http://localhost:8080/api/mail/verify?mail=" + mail + "&code="+code;
       return this.httpClient.get<string>(url,{headers:this.headers}).toPromise();
     }
-
 }

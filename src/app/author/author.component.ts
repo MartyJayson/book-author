@@ -29,7 +29,6 @@ export class AuthorComponent implements OnInit {
     this.authors?.find(x => x.id == id)?.birthdate?.toDateString();
   }*/
   delete(id:number|undefined){
-    console.log(id);
     this.helloService.deleteAuthor(id).subscribe(data => this.ans = data);
   }
   async next(){

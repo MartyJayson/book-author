@@ -28,7 +28,6 @@ export class BookComponent implements OnInit {
   getAuthorName(id:number){
     let b = this.books?.items.find(x => x.id === id+1);
     let a = this.authors.find(z => z.id === b?.authorid);
-    console.log(a.id);
     return a?.name;
   }
 
@@ -37,7 +36,6 @@ export class BookComponent implements OnInit {
     this.books = await this.helloService.getBooksAwait(this.page,this.sort,this.asc);
   }
   deleteBook(id:number|undefined){
-    console.log(id);
     this.helloService.deleteBook(id).subscribe(data => this.ans = data);
   }
   async next(){
@@ -69,8 +67,6 @@ export class BookComponent implements OnInit {
       this.asc="desc";
     else
       this.asc="asc";
-
-
     this.books = null;
     this.books = await this.helloService.getBooksAwait(this.page,this.sort,this.asc);
   }
